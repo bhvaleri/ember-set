@@ -25,7 +25,7 @@ var ApplicationController = Ember.Controller.extend({
 			{
 				cardsToShow.pushObject(newCard);
 			}
-		}.observes('cardsToShow.[]').on('init')
+		}
 	}
 });
 
