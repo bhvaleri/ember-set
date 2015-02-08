@@ -49,7 +49,7 @@ var shuffle = function (array) {
 
 var ApplicationRoute = Ember.Route.extend({
 	model: function() {
-		return { deck: shuffle(newDeck()) };
+		return { deck: newDeck() };
 	}
 });
 

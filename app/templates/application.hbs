@@ -1,14 +1,20 @@
 <h2 id='title'>Set</h2>
 
-{{#if cardsToShow.length}}
-	{{#each card in cardsToShow}}
-		<div class="card">
-			{{card.color}}
-			{{card.shape}}
-			{{card.count}}
-			{{card.fill}}
-		</div>
-	{{/each}}
-{{else}}
-	<button {{action "dealCards"}}>deal</button>
-{{/if}}
+{{#each card in cardsToShow}}
+	<div class="card" {{action "addCard" card}}>
+		{{card.color}}
+		{{card.shape}}
+		{{card.count}}
+		{{card.fill}}
+	</div>
+{{/each}}
+
+<div>
+{{#each card in selectedCards}}
+	<div class="card" {{action "addCard" card}}>
+		{{card.color}}
+		{{card.shape}}
+		{{card.count}}
+		{{card.fill}}
+	</div>
+{{/each}}
