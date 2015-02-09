@@ -35,7 +35,7 @@ var ApplicationController = Ember.Controller.extend({
 
 	//TODO be more clever
 	hasSet: function () {
-		var selectedCards = this.get('selectedCards');
+		var selectedCards = this.get('selectedCards').mapBy('card');
 
 		var attrs = ['color', 'shape', 'fill', 'count'];
 
@@ -64,9 +64,24 @@ var ApplicationController = Ember.Controller.extend({
 		return false;
 	}.property('selectedCards.[]'),
 
+
 	actions: {
 		addCard: function (card) {
-			this.selectedCards.pushObject(card);
+			var selectedCards = this.selectedCards;
+
+			if (selectedCards.indexOf(card) < 0) {
+				if (selectedCards.length >= 3) {
+					var cardToRemove = selectedCards.objectAt(0);
+					selectedCards.removeObject(cardToRemove);
+					cardToRemove.set('selected', false);
+				}
+
+				selectedCards.pushObject(card);
+				//just pop out the first element if there are already 3 cards?
+			}
+			else {
+				selectedCards.removeObject(card);
+			}
 		}
 	}
 });

@@ -1,20 +1,6 @@
 <h2 id='title'>Set</h2>
 
+<div>Has Set {{hasSet}}</div>
 {{#each card in cardsToShow}}
-	<div class="card" {{action "addCard" card}}>
-		{{card.color}}
-		{{card.shape}}
-		{{card.count}}
-		{{card.fill}}
-	</div>
-{{/each}}
-
-<div>
-{{#each card in selectedCards}}
-	<div class="card" {{action "addCard" card}}>
-		{{card.color}}
-		{{card.shape}}
-		{{card.count}}
-		{{card.fill}}
-	</div>
+	{{set-card card=card action="addCard"}}
 {{/each}}
