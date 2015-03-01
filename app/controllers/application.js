@@ -24,7 +24,7 @@ var ApplicationController = Ember.Controller.extend({
 
 			var newCard = null;
 			//check for cards left in deck
-			while (cardsToShow.length < 80 && (newCard = this.newCard()))
+			while (cardsToShow.length < 12 && (newCard = this.newCard()))
 			{
 				cardsToShow.pushObject(newCard);
 			}
@@ -75,8 +75,10 @@ var ApplicationController = Ember.Controller.extend({
 			});
 
 			this.set('selectedCards', []);
+
+			this.dealCards()
 		}
-	}.observes('hasSet'),
+	}.observes('hasSet').on('init'),
 
 
 	actions: {
