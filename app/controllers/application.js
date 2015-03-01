@@ -32,7 +32,6 @@ var ApplicationController = Ember.Controller.extend({
 
 	selectedCards: [],
 
-
 	//TODO be more clever
 	hasSet: function () {
 		var selectedCards = this.get('selectedCards').mapBy('card');
@@ -62,7 +61,22 @@ var ApplicationController = Ember.Controller.extend({
 		}
 
 		return false;
-	}.property('selectedCards.[]'),
+	}.property('selectedCards', 'selectedCards.[]'),
+
+	//should this just be handled in cardsToShow, ie cardsToShow being a property of has set?
+	// that feels wierd since its a response to an event
+	hasSetDidChange: function () {
+		if (this.get('hasSet')) {
+			var selectedCards = this.get('selectedCards').mapBy('card');
+			var cardsToShow = this.get('cardsToShow');
+
+			selectedCards.forEach(function(card) {
+				cardsToShow.removeObject(card);
+			});
+
+			this.set('selectedCards', []);
+		}
+	}.observes('hasSet'),
 
 
 	actions: {
