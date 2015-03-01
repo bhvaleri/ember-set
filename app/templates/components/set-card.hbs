@@ -1,4 +1,9 @@
-{{card.color}}
-{{card.shape}}
+{{!-- {{card.color}}
 {{card.count}}
 {{card.fill}}
+ --}}
+<div class='shape-container'>
+	{{#each shapesToShow}}
+		<div class="shape oval"></div>
+	{{/each}}
+</div>

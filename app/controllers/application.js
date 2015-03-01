@@ -31,6 +31,7 @@ var ApplicationController = Ember.Controller.extend({
 	},
 
 	selectedCards: [],
+	sets: [],
 
 	//TODO be more clever
 	hasSet: function () {
@@ -75,8 +76,8 @@ var ApplicationController = Ember.Controller.extend({
 			});
 
 			this.set('selectedCards', []);
-
-			this.dealCards()
+			this.get('sets').pushObject(selectedCards);
+			this.dealCards();
 		}
 	}.observes('hasSet').on('init'),
 

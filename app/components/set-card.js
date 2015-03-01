@@ -7,7 +7,14 @@ var SetCard = Ember.Component.extend({
 	click: function() {
 		this.toggleProperty('selected');
 		this.sendAction('action', this);
-	}
+	},
+
+	//todo make a handlebars for helper
+	shapesToShow: function () {
+		var placeHolder = [];
+		placeHolder.length = this.get('card.count');
+		return placeHolder;
+	}.property('card.count')
 });
 
 export default SetCard;
